@@ -1,3 +1,4 @@
+/*
 import {search, download} from 'aptoide-scraper';
 const handler = async (m, {conn, usedPrefix: prefix, command, text}) => {
  if (!text) throw `معشوق الجماهير هذا الأمر خاص بتحميل التطبيقات المجانية والمدفوعة منها نكتب هكذا على سبيل المثال \n*.apk facebbok lite*`;
@@ -18,3 +19,39 @@ handler.help = ["apk"]
 handler.tags = ["applications"]
 handler.command = ["apk"] 
 export default handler;
+
+
+*/
+///*====≈============
+
+import fetch from 'node-fetch';
+import { scrape } from '../lib/scrape.js';
+
+const handler = async (m, { conn, text }) => {
+    if (!text) throw `يرجى تحديد اسم التطبيق الذي ترغب في البحث عنه.`;
+    
+    try {
+        const url = `https://witanime.cyou/episode/one-piece-%D8%A7%D9%84%D8%AD%D9%84%D9%82%D8%A9-${text}/`;
+        const response = await fetch(url);
+        const html = await response.text();
+
+        const apkLink = scrape(html, 'a[text="mediafire"]');
+
+        if (apkLink) {
+            await conn.sendMessage(m.chat, `تم العثور على رابط التطبيق:\n${apkLink}`, m);
+        } else {
+            throw `لم يتم العثور على رابط لتحميل التطبيق في هذا الرابط.`;
+        }
+    } catch (e) {
+        console.error(e);
+        throw `حدث خطأ أثناء البحث عن رابط التطبيق. يُرجى المحاولة مرة أخرى لاحقًا.`;
+    }
+};
+
+handler.help = ['apk'];
+handler.tags = ['applications'];
+handler.command = ['apk'];
+
+export default handler;
+
+//*/
