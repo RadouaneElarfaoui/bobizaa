@@ -36,7 +36,7 @@ const handler = async (m, { conn, text }) => {
         const html = await response.text();
 
         const $ = cheerio.load(html);
-        const apkLink = $('a').filter((i, el) => $(el).text().toLowerCase().includes('mediafire')).attr('href');
+        const apkLink = $//$('a').filter((i, el) => $(el).text().toLowerCase().includes('mediafire')).attr('href');
 
         if (apkLink) {
             await conn.sendMessage(m.chat, `تم العثور على رابط التطبيق:\n${apkLink}`, m);
