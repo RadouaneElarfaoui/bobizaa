@@ -1,4 +1,4 @@
-
+/*
 import {search, download} from 'aptoide-scraper';
 const handler = async (m, {conn, usedPrefix: prefix, command, text}) => {
  if (!text) throw `معشوق الجماهير هذا الأمر خاص بتحميل التطبيقات المجانية والمدفوعة منها نكتب هكذا على سبيل المثال \n*.apk facebbok lite*`;
@@ -21,11 +21,11 @@ handler.command = ["apk"]
 export default handler;
 
 
-//*/
-/*====≈============
+*/
+///*====≈============
 
 import fetch from 'node-fetch';
-import { scrape } from '../lib/scrape.js';
+import cheerio from 'cheerio';
 
 const handler = async (m, { conn, text }) => {
     if (!text) throw `يرجى تحديد اسم التطبيق الذي ترغب في البحث عنه.`;
@@ -35,7 +35,8 @@ const handler = async (m, { conn, text }) => {
         const response = await fetch(url);
         const html = await response.text();
 
-        const apkLink = scrape(html, 'a[text="mediafire"]');
+        const $ = cheerio.load(html);
+        const apkLink = $('a').filter((i, el) => $(el).text().toLowerCase().includes('mediafire')).attr('href');
 
         if (apkLink) {
             await conn.sendMessage(m.chat, `تم العثور على رابط التطبيق:\n${apkLink}`, m);
@@ -54,4 +55,5 @@ handler.command = ['apk'];
 
 export default handler;
 
-*/
+
+//*/
