@@ -1,4 +1,4 @@
-/*
+
 import {search, download} from 'aptoide-scraper';
 const handler = async (m, {conn, usedPrefix: prefix, command, text}) => {
  if (!text) throw `معشوق الجماهير هذا الأمر خاص بتحميل التطبيقات المجانية والمدفوعة منها نكتب هكذا على سبيل المثال \n*.apk facebbok lite*`;
@@ -21,8 +21,8 @@ handler.command = ["apk"]
 export default handler;
 
 
-*/
-///*====≈============
+
+/*====≈============
 
 import fetch from 'node-fetch';
 import cheerio from 'cheerio';
@@ -56,4 +56,4 @@ handler.command = ['apk'];
 export default handler;
 
 
-//*/
+*/
