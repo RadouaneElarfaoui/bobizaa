@@ -138,7 +138,7 @@ contextInfo: {
 externalAdReply: {
 title: 'ELARFAOUI BOT',
 body: "Welcome to my world ",
-thumbnailUrl: 'https://telegra.ph/file/2829c7653514416d207e2.jpg',
+thumbnailUrl: 'https://github.com/RadouaneElarfaoui/bobizaa/blob/master/src/pictures/IMG_20240426_020827_205.png',
 sourceUrl: 'https://www.instagram.com/a.r.f.radouane?igsh=MWpneXB1dDIzcmJ4ag==',
 mediaType: 1,
 renderLargerThumbnail: true
